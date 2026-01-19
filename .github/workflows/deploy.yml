@@ -63,6 +63,10 @@ jobs:
             echo "SSH connection successful!"
             echo "Connected as user: $(whoami)"
             echo "Current directory: $(pwd)"
+            echo "Checking SSH directory permissions..."
+            ls -la ~/.ssh/ || echo "~/.ssh directory does not exist"
+            echo "Checking authorized_keys..."
+            ls -l ~/.ssh/authorized_keys 2>/dev/null || echo "authorized_keys file does not exist"
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
