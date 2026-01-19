@@ -1,3 +1,27 @@
 .env
+.env.local
+.env.*.local
 env
+venv
+ENV
 __pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Docker
+*.tar.gz
+image.tar.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+DEPLOYMENT.md
