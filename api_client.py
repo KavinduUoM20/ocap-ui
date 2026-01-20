@@ -10,7 +10,10 @@ load_dotenv()
 class APIClient:
     """Client for interacting with the API endpoints."""
     
-    BASE_URL = os.getenv("BASE_URL", "http://127.0.0.1:8000/api/v1")
+    BASE_URL = os.getenv("BASE_URL")
+    
+    if not BASE_URL:
+        raise ValueError("BASE_URL environment variable is required. Please set it in your .env file or environment variables.")
     
     @staticmethod
     def login(username: str, password: str) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:

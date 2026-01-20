@@ -27,12 +27,10 @@ docker rm $CONTAINER_NAME 2>/dev/null || true
 # Ensure .env file exists
 mkdir -p $APP_DIR
 if [ ! -f $APP_DIR/.env ]; then
-    echo "Creating .env file template..."
-    cat > $APP_DIR/.env << EOF
-# API Configuration
-BASE_URL=http://127.0.0.1:8000/api/v1
-EOF
-    echo "Please edit $APP_DIR/.env with your actual configuration values"
+    echo "ERROR: .env file not found at $APP_DIR/.env"
+    echo "Please create it with BASE_URL configuration:"
+    echo "  echo 'BASE_URL=http://your-api-url:8000/api/v1' > $APP_DIR/.env"
+    exit 1
 fi
 
 # Run new container

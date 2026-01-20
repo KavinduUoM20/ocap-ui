@@ -101,12 +101,8 @@ jobs:
             APP_DIR="$HOME/ocap-ui"
             mkdir -p $APP_DIR
             
-            # Ensure .env file exists
-            if [ ! -f $APP_DIR/.env ]; then
-              echo "Warning: .env file not found at $APP_DIR/.env"
-              echo "Creating a template .env file. Please update it with your values."
-              echo "BASE_URL=http://127.0.0.1:8000/api/v1" > $APP_DIR/.env
-            fi
+            # Create .env file with BASE_URL from GitHub secrets
+            echo "BASE_URL=${{ secrets.BASE_URL }}" > $APP_DIR/.env
             
             # Run new container
             $DOCKER_CMD run -d \
